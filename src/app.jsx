@@ -1,13 +1,17 @@
 import React from 'react';
+import {Router, Route, hashHistory, IndexRoute} from 'react-router';
+import MainLayout from './components/main_layout';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>It Works!</h1>
-        <p>This React project just works including <span className="redBg">module</span> local styles.</p>
-        <p>Enjoy!</p>
-      </div>
-    )
-  }
+class App extends React.Component {
+	render() {
+		return (
+			<Router history={hashHistory}>
+				<Route path='/' component={MainLayout}>
+					<IndexRoute component={BuildConfigContainer}/>
+				</Route>
+			</Router>
+		);
+	}
 }
+
+export default App;
