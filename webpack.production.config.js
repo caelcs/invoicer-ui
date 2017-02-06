@@ -5,10 +5,33 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+// global css
 loaders.push({
-	test: /\.scss$/,
-	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded'),
-	exclude: ['node_modules']
+	test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
+	loaders: [
+		'style?sourceMap',
+		'css'
+	]
+});
+// local scss modules
+loaders.push({
+	test: /[\/\\]src[\/\\].*\.scss/,
+	exclude: /(node_modules|bower_components|public)/,
+	loaders: [
+		'style?sourceMap',
+		'css',
+		'sass'
+	]
+});
+
+// local css modules
+loaders.push({
+	test: /[\/\\]src[\/\\].*\.css/,
+	exclude: /(node_modules|bower_components|public)/,
+	loaders: [
+		'style?sourceMap',
+		'css'
+	]
 });
 
 module.exports = {
