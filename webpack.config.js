@@ -9,35 +9,17 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || "8888";
 
-// global css
 loaders.push({
-	test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
-	loaders: [
-		'style?sourceMap',
-		'css'
-	]
-});
-// local scss modules
-loaders.push({
-	test: /[\/\\]src[\/\\].*\.scss/,
-	exclude: /(node_modules|bower_components|public)/,
-	loaders: [
-		'style?sourceMap',
-		'css',
-		'sass'
-	]
+	test: /\.scss$/,
+	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded'),
+	exclude: ['node_modules']
 });
 
-// local css modules
 loaders.push({
-	test: /[\/\\]src[\/\\].*\.css/,
-	exclude: /(node_modules|bower_components|public)/,
-	loaders: [
-		'style?sourceMap',
-		'css'
-	]
+	test: /\.css$/,
+	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]'),
+	exclude: ['node_modules']
 });
-
 
 module.exports = {
 	entry: [
