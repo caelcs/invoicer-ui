@@ -5,16 +5,22 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-loaders.push({ 
-	test: /\.scss$/, 
+loaders.push({
+	test: /\.scss$/,
 	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded'),
+	exclude: ['node_modules']
+});
+
+loaders.push({
+	test: /\.css$/,
+	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]'),
 	exclude: ['node_modules']
 });
 
 module.exports = {
 	entry: [
 		'./src/index.jsx',
-		'./styles/index.scss'
+		'./src/assets/styles/index.scss'
 	],
 	output: {
 		publicPath: '/',
@@ -51,7 +57,7 @@ module.exports = {
 			template: './src/template.html',
 			files: {
 				css: ['style.css'],
-				js: [ "bundle.js"],
+				js: [ "bundle.js"]
 			}
 		})
 	]

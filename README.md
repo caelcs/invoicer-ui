@@ -88,3 +88,10 @@ npm run lint
 ### Notes on importing css styles
 * styles having /src/ in their absolute path are considered part of the application and exported as local css modules.
 * other styles are considered global styles used by many components and are included in the css bundle directly.
+
+### Template Info
+* Name: 		Klorofil - Free Bootstrap Dashboard Template
+* Version: 	1.0
+* Author: 	The Develovers
+* Website: 	https://www.themeineed.com/
+* Twitter: 	https://twitter.com/thedevelovers
