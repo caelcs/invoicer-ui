@@ -7,8 +7,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 loaders.push({
 	test: /\.scss$/,
-	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded'),
-	exclude: ['node_modules']
+	include: ['/src/assets/styles'],
+	loader: ExtractTextPlugin.extract('style', [
+		'css?sourceMap',
+		'postcss',
+		'sass?sourceMap&outputStyle=expanded'].join('!'))
 });
 
 loaders.push({
@@ -19,7 +22,7 @@ loaders.push({
 
 module.exports = {
 	entry: [
-		'./src/index.jsx',
+		'./src/app/index.jsx',
 		'./src/assets/styles/index.scss'
 	],
 	output: {
@@ -54,7 +57,7 @@ module.exports = {
 		      allChunks: true
 		}),
 		new HtmlWebpackPlugin({
-			template: './src/template.html',
+			template: './src/app/template.html',
 			files: {
 				css: ['style.css'],
 				js: [ "bundle.js"]
