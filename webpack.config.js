@@ -11,8 +11,11 @@ const PORT = process.env.PORT || "8888";
 
 loaders.push({
 	test: /\.scss$/,
-	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded'),
-	exclude: ['node_modules']
+	include: ['./src/assets/styles'],
+	loader: ExtractTextPlugin.extract('style', [
+		'css?sourceMap',
+		'postcss',
+		'sass?sourceMap&outputStyle=expanded'].join('!'))
 });
 
 loaders.push({
@@ -24,7 +27,7 @@ loaders.push({
 module.exports = {
 	entry: [
 		'react-hot-loader/patch',
-		'./src/index.jsx', // your app's entry point
+		'./src/app/index.jsx', // your app's entry point
 		'./src/assets/styles/index.scss'
 	],
 	devtool: process.env.WEBPACK_DEVTOOL || 'eval-source-map',
@@ -60,7 +63,7 @@ module.exports = {
 		}),
 		new DashboardPlugin(),
 		new HtmlWebpackPlugin({
-			template: './src/template.html',
+			template: './src/app/template.html',
 			files: {
 				css: ['style.css'],
 				js: [ "bundle.js"],
