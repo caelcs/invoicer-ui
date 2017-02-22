@@ -9,13 +9,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || "8888";
 
+
 loaders.push({
 	test: /\.scss$/,
-	include: ['./src/assets/styles'],
-	loader: ExtractTextPlugin.extract('style', [
-		'css?sourceMap',
-		'postcss',
-		'sass?sourceMap&outputStyle=expanded'].join('!'))
+	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded'),
+	exclude: ['node_modules']
 });
 
 loaders.push({
