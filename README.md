@@ -1,6 +1,8 @@
 # Invoicer UI
 Simple React-Redux app to show your invoices.
 
+[![Build Status](https://travis-ci.org/caelwinner/invoicer-ui.svg?branch=master)](https://travis-ci.org/caelwinner/invoicer-ui)
+
 ### What's in it?
 
 * Simple src/index.jsx and src/index.css (local module css).
