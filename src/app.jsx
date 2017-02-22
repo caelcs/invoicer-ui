@@ -1,6 +1,6 @@
 import React from 'react';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
-import Layout from './layout/layout';
+import Layout from './features/layout/components/layout';
 
 const Home = () => {
 	return (<div className="panel panel-headline">

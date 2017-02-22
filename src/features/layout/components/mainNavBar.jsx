@@ -1,5 +1,5 @@
 import React from 'react';
-import user from '../../assets/img/user.png';
+import user from '../../../assets/img/user.png';
 
 class MainNavBar extends React.Component {
     render() {

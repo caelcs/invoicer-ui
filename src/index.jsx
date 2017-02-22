@@ -6,9 +6,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import App from './components/app.jsx';
+import App from './app.jsx';
 
-import configureStore from './reducers/index';
+import configureStore from './config/store';
 
 let configManagerStore = configureStore();
 
@@ -16,8 +16,8 @@ renderWithHotReload(App);
 
 // Hot Module Replacement API
 if (module && module.hot) {
-	module.hot.accept('./components/app.jsx', () => {
-		const App = require('./components/app.jsx').default;
+	module.hot.accept('./app.jsx', () => {
+		const App = require('./app.jsx').default;
 		renderWithHotReload(App);
 	});
 }
