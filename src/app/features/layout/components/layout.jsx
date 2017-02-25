@@ -11,7 +11,9 @@ class Layout extends React.Component {
 						<SideBar />
 						<div className="main">
 							<MainNavBar />
-							<MainContent children={this.props.children} />
+							<MainContent>
+                {this.props.children}
+              </MainContent>
 							<MainFooter />
 						</div>
 					</div>
