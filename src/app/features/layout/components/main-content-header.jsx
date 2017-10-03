@@ -11,7 +11,8 @@ class MainContentHeader extends React.Component {
 
         <div className="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right">
           <a className="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="images/profile-pic.jpg" alt="profile photo" className="circle float-left profile-photo" width="50" height="auto"/>
+
+            <i className="fa fa-user fa-4x circle float-left profile-photo" aria-hidden="true"></i>
 
             <div className="username mt-1">
               <h4 className="mb-1">Username</h4>
@@ -20,7 +21,7 @@ class MainContentHeader extends React.Component {
             </div>
           </a>
 
-          <div className="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+          <div className="dropdown-menu dropdown-menu-right dropdown-menu-margin" aria-labelledby="dropdownMenuLink">
             <a className="dropdown-item" href="#"><em className="fa fa-user-circle mr-1"></em> View Profile</a>
             <a className="dropdown-item" href="#"><em className="fa fa-sliders mr-1"></em> Preferences</a>
             <a className="dropdown-item" href="#"><em className="fa fa-power-off mr-1"></em> Logout</a>
