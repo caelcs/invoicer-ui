@@ -1,6 +1,6 @@
 import React from 'react';
-import {render, shallow} from 'enzyme';
-import {expect} from 'chai';
+import { render, shallow } from 'enzyme';
+import { expect } from 'chai';
 
 import Layout from './layout';
 import SideBar from './side-bar';
