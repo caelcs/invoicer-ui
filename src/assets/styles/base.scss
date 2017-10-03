@@ -167,6 +167,10 @@ p {
 	background-image: none;
 }
 
+.dropdown-menu-margin {
+  margin-right: 1.5rem;
+}
+
 .nav-pills .nav-link.active, .badge-primary[href]:focus, .badge-primary[href]:hover, a.bg-primary:focus, a.bg-primary:hover {
 	background-color: $primary-color-hover!important;
 }

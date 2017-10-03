@@ -19,7 +19,7 @@
   "homepage": "https://github.com/caelwinner/invoicer-ui#readme",
   "dependencies": {
     "axios": "^0.15.3",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "4.0.0-alpha.6",
     "font-awesome": "^4.7.0",
     "google-auth-library": "^0.11.0",
     "node-sass": "^4.3.0",
