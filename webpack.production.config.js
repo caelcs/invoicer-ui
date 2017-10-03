@@ -7,7 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 loaders.push({
 	test: /\.scss$/,
-	include: ['/src/assets/styles'],
+	exclude: ['node_modules'],
 	loader: ExtractTextPlugin.extract('style', [
 		'css?sourceMap',
 		'postcss',
@@ -16,8 +16,7 @@ loaders.push({
 
 loaders.push({
 	test: /\.css$/,
-	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]'),
-	exclude: ['node_modules']
+	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]')
 });
 
 module.exports = {
