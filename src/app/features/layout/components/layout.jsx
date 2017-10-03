@@ -7,16 +7,14 @@ import MainFooter from './main-footer';
 class Layout extends React.Component {
     render() {
         return (
-					<div id="wrapper">
-						<SideBar />
-						<div className="main">
-							<MainNavBar />
-							<MainContent>
+          <div className="container-fluid" id="wrapper">
+        		<div className="row">
+        			<SideBar />
+              <MainContent>
                 {this.props.children}
               </MainContent>
-							<MainFooter />
-						</div>
-					</div>
+        		</div>
+        	</div>
         );
     }
 }
