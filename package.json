@@ -1,7 +1,7 @@
 {
-  "name": "webpack-react-redux-boilerplate",
-  "version": "1.0.0",
-  "description": "Webpack 3 React, Redux and Sass boilerplate",
+  "name": "invoicer",
+  "version": "1.0.1",
+  "description": "UI application to manage your invoices",
   "private": false,
   "license": "MIT",
   "scripts": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:thekeogh/webpack-react-redux.git"
+    "url": "git@github.com:caelwinner/invoicer-ui.git"
   },
   "keywords": [
     "react",
@@ -27,11 +27,11 @@
     "redux",
     "sass"
   ],
-  "author": "Steve McKeogh",
+  "author": "Adolfo Custidiano",
   "bugs": {
-    "url": "https://github.com/thekeogh/webpack-react-redux/issues"
+    "url": "https://github.com/caelwinner/invoicer-ui/issues"
   },
-  "homepage": "https://github.com/thekeogh/webpack-react-redux/",
+  "homepage": "https://github.com/caelwinner/invoicer-ui",
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.26.0",
