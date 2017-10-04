@@ -16,8 +16,8 @@ module.exports = {
   context: resolve(__dirname, 'src'),
 
   entry: [
-    './',
-    './scss/app'
+    './app',
+    './assets/scss/index'
   ],
 
   output: {
@@ -45,6 +45,16 @@ module.exports = {
           ],
         }),
       },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]',
+            'postcss-loader'
+          ],
+        }),
+      },
       { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=15000&name=[hash:base64:5].[ext]' },
       { test: /\.eot(\?v=\d+.\d+.\d+)?$/, use: 'file-loader' },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: 'url-loader?limit=10000&mimetype=application/font-woff' },
@@ -56,9 +66,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
     alias: {
-      variables: resolve(__dirname, 'src/app/scss/utils/variables'),
-      mixins: resolve(__dirname, 'src/app/scss/utils/mixins'),
-      respond: resolve(__dirname, 'src/app/scss/utils/respond')
+      //variables: resolve(__dirname, 'src/app/scss/utils/variables'),
+      //mixins: resolve(__dirname, 'src/app/scss/utils/mixins'),
+      //respond: resolve(__dirname, 'src/app/scss/utils/respond')
     }
   },
 

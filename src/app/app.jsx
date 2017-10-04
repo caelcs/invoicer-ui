@@ -1,6 +1,4 @@
 import React from 'react';
-import {Router, Route, hashHistory, IndexRoute} from 'react-router';
-import Layout from './features/layout/components/layout';
 
 const Home = () => {
 	return (<div className="panel panel-headline">
@@ -20,13 +18,7 @@ const Home = () => {
 
 class App extends React.Component {
 	render() {
-		return (
-			<Router history={hashHistory}>
-				<Route path='/' component={Layout}>
-					<IndexRoute component={Home}/>
-				</Route>
-			</Router>
-		);
+		return (<div></div>);
 	}
 }
 
