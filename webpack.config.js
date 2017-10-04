@@ -10,23 +10,23 @@ let DashboardPlugin = require('webpack-dashboard/plugin');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  
+
   devtool: 'cheap-module-eval-source-map',
-  
+
   context: resolve(__dirname, 'src'),
-  
+
   entry: [
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://${process.env.NODE_HOST || 'localhost'}:${process.env.NODE_PORT || 8111}`,
     './'
   ],
-  
+
   output: {
     filename: 'app-[hash].js',
     path: resolve(__dirname, 'build'),
     publicPath: '/',
   },
-  
+
   module: {
     rules: [
       {
@@ -46,16 +46,16 @@ module.exports = {
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: 'url-loader?limit=10000&mimetype=image/svg+xml' }
     ]
   },
-  
+
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
     alias: {
-      variables: resolve(__dirname, 'src/scss/utils/variables'),
-      mixins: resolve(__dirname, 'src/scss/utils/mixins'),
-      respond: resolve(__dirname, 'src/scss/utils/respond')
+      variables: resolve(__dirname, 'src/assets/scss/utils/variables'),
+      mixins: resolve(__dirname, 'src/assets/scss/utils/mixins'),
+      respond: resolve(__dirname, 'src/assets/scss/utils/respond')
     }
   },
-  
+
   devServer: {
     host: process.env.NODE_HOST || 'localhost',
     port: process.env.NODE_PORT || 8111,
@@ -77,7 +77,7 @@ module.exports = {
       colors: true
     }
   },
-  
+
   plugins: [
     new Dotenv({
       path: './.env',
@@ -85,12 +85,12 @@ module.exports = {
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new HtmlWebpackPlugin({
-      template: `${__dirname}/src/index.html`,
+      template: `${__dirname}/src/app/template.html`,
       filename: 'index.html',
       inject: 'body',
     }),
     new webpack.HotModuleReplacementPlugin(),
     new DashboardPlugin()
   ]
-  
+
 }

@@ -10,22 +10,22 @@ let HtmlWebpackPlugin = require('html-webpack-plugin');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  
+
   devtool: false,
-  
+
   context: resolve(__dirname, 'src'),
-  
+
   entry: [
     './',
     './scss/app'
   ],
-  
+
   output: {
     filename: 'app-[hash].js',
     path: resolve(__dirname, 'build'),
     publicPath: '/',
   },
-  
+
   module: {
     rules: [
       {
@@ -52,16 +52,16 @@ module.exports = {
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: 'url-loader?limit=10000&mimetype=image/svg+xml' }
     ]
   },
-  
+
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
     alias: {
-      variables: resolve(__dirname, 'src/scss/utils/variables'),
-      mixins: resolve(__dirname, 'src/scss/utils/mixins'),
-      respond: resolve(__dirname, 'src/scss/utils/respond')
+      variables: resolve(__dirname, 'src/app/scss/utils/variables'),
+      mixins: resolve(__dirname, 'src/app/scss/utils/mixins'),
+      respond: resolve(__dirname, 'src/app/scss/utils/respond')
     }
   },
-  
+
   plugins: [
     new Dotenv({
       path: './.env.production',
@@ -69,7 +69,7 @@ module.exports = {
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new HtmlWebpackPlugin({
-      template: `${__dirname}/src/index.html`,
+      template: `${__dirname}/src/app/template.html`,
       filename: 'index.html',
       inject: 'body',
     }),
@@ -91,5 +91,5 @@ module.exports = {
     }),
     new ExtractTextPlugin({ filename: 'app-[hash].css', disable: false, allChunks: true })
   ]
-  
+
 }
