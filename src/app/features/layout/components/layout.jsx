@@ -9,7 +9,7 @@ class Layout extends React.Component {
         		<div className="row">
         			<SideBar />
               <MainContent>
-                {this.props.children}
+                hello
               </MainContent>
         		</div>
         	</div>

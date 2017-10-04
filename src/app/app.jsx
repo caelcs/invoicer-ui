@@ -1,4 +1,8 @@
 import React from 'react';
+import { BrowserRouter as Router,
+	Route,
+	Switch } from 'react-router-dom';
+import Layout from './features/layout/components/layout';
 
 const Home = () => {
 	return (<div className="panel panel-headline">
@@ -18,7 +22,15 @@ const Home = () => {
 
 class App extends React.Component {
 	render() {
-		return (<div></div>);
+		return (
+			<Router>
+				<div>
+					<Route path='/' component={Layout}>
+							<Route path='/' component={Home} />
+					</Route>
+				</div>
+			</Router>
+		);
 	}
 }
 
