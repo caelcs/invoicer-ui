@@ -16,10 +16,4 @@ describe('Main Content tests', () => {
     const section = root.find('section');
     expect(section).toHaveLength(1);
   });
-
-  it('should render content inside the section', () => {
-    const root = shallow(<MainContent>hello</MainContent>);
-    const section = root.find('div.col-sm-12');
-    expect(section.text()).toEqual('hello');
-  });
 });

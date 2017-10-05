@@ -8,9 +8,7 @@ class Layout extends React.Component {
           <div className="container-fluid" id="wrapper">
         		<div className="row">
         			<SideBar />
-              <MainContent>
-                {this.props.children}
-              </MainContent>
+              <MainContent />
         		</div>
         	</div>
         );

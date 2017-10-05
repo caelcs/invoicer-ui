@@ -7,14 +7,14 @@ import MainContent from './main-content';
 
 describe('Layout tests', () => {
   it('should contains Side Bar', () => {
-    const wrapper = shallow(<Layout children='Hello world.'/>);
+    const wrapper = shallow(<Layout />);
 
     expect(wrapper.contains(<SideBar />)).toEqual(true);
   });
 
   it('should contains Content', () => {
-    const wrapper = shallow(<Layout children='Hello world.'/>);
+    const wrapper = shallow(<Layout />);
 
-    expect(wrapper.contains(<MainContent>Hello world.</MainContent>)).toEqual(true);
+    expect(wrapper.contains(<MainContent />)).toEqual(true);
   });
 });
