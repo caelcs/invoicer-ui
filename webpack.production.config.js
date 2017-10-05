@@ -39,7 +39,7 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]',
+            'css-loader',
             'postcss-loader',
             { loader: 'sass-loader', query: { sourceMap: false } }
           ],
@@ -50,10 +50,10 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]',
+            'css-loader',
             'postcss-loader'
-          ],
-        }),
+          ]
+        })
       },
       { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=15000&name=[hash:base64:5].[ext]' },
       { test: /\.eot(\?v=\d+.\d+.\d+)?$/, use: 'file-loader' },
@@ -64,7 +64,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
+    extensions: ['.js', '.jsx', '.scss', '.css'],
     alias: {
       //variables: resolve(__dirname, 'src/app/scss/utils/variables'),
       //mixins: resolve(__dirname, 'src/app/scss/utils/mixins'),

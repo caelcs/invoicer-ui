@@ -11,3 +11,6 @@ logs
 *.log
 .env
 .env.production
+*.iml
+public
+.idea
