@@ -1,71 +1,117 @@
-"use strict";
-var webpack = require('webpack');
-var path = require('path');
-var loaders = require('./webpack.loaders');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var DashboardPlugin = require('webpack-dashboard/plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+/**
+ * Development Webpack Configuration
+ */
 
-const HOST = process.env.HOST || "127.0.0.1";
-const PORT = process.env.PORT || "8888";
+let Dotenv = require('dotenv-webpack');
+let { resolve } = require('path');
 
-
-loaders.push({
-	test: /\.scss$/,
-	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded'),
-	exclude: ['node_modules']
-});
-
-loaders.push({
-	test: /\.css$/,
-	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&localIdentName=[local]___[hash:base64:5]'),
-	exclude: ['node_modules']
-});
+let webpack = require('webpack');
+let DashboardPlugin = require('webpack-dashboard/plugin');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-	entry: [
-		'react-hot-loader/patch',
-		'./src/app/index.jsx', // your app's entry point
-		'./src/assets/styles/index.scss'
-	],
-	devtool: process.env.WEBPACK_DEVTOOL || 'eval-source-map',
-	output: {
-		publicPath: '/',
-		path: path.join(__dirname, 'public'),
-		filename: 'bundle.js'
-	},
-	resolve: {
-		extensions: ['', '.js', '.jsx']
-	},
-	module: {
-		loaders
-	},
-	devServer: {
-		contentBase: "./public",
-		// do not print bundle build stats
-		noInfo: true,
-		// enable HMR
-		hot: true,
-		// embed the webpack-dev-server runtime into the bundle
-		inline: true,
-		// serve index.html in place of 404 responses to allow HTML5 history
-		historyApiFallback: true,
-		port: PORT,
-		host: HOST
-	},
-	plugins: [
-		new webpack.NoErrorsPlugin(),
-		new webpack.HotModuleReplacementPlugin(),
-	    new ExtractTextPlugin("style.css", {
-		      allChunks: true
-		}),
-		new DashboardPlugin(),
-		new HtmlWebpackPlugin({
-			template: './src/app/template.html',
-			files: {
-				css: ['style.css'],
-				js: [ "bundle.js"],
-			}
-		}),
-	]
-};
+
+  devtool: 'cheap-module-eval-source-map',
+
+  context: resolve(__dirname, 'src'),
+
+  entry: [
+    'react-hot-loader/patch',
+    `webpack-dev-server/client?http://${process.env.NODE_HOST || 'localhost'}:${process.env.NODE_PORT || 8111}`,
+    './app'
+  ],
+
+  output: {
+    filename: 'app-[hash].js',
+    path: resolve(__dirname, 'build'),
+    publicPath: '/',
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        loaders: ['babel-loader'],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'postcss-loader',
+            { loader: 'sass-loader', query: { sourceMap: false } }
+          ],
+        }),
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'postcss-loader'
+          ]
+        })
+      },
+      { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=15000&name=[name]-[hash].[ext]' },
+      { test: /\.eot(\?v=\d+.\d+.\d+)?$/, use: 'file-loader' },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: 'url-loader?limit=10000&mimetype=application/font-woff' },
+      { test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, use: 'url-loader?limit=10000&mimetype=application/octet-stream' },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: 'url-loader?limit=10000&mimetype=image/svg+xml' }
+    ]
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss', '.css'],
+    alias: {
+      variables: resolve(__dirname, 'src/assets/scss/utils/variables'),
+      mixins: resolve(__dirname, 'src/assets/scss/utils/mixins'),
+      respond: resolve(__dirname, 'src/assets/scss/utils/respond')
+    }
+  },
+
+  devServer: {
+    host: process.env.NODE_HOST || 'localhost',
+    port: process.env.NODE_PORT || 8111,
+    contentBase: resolve(__dirname, 'build'),
+    publicPath: '/',
+    historyApiFallback: true,
+    hot: true,
+    noInfo: false,
+    stats: {
+      assets: true,
+      children: false,
+      chunks: false,
+      hash: false,
+      modules: false,
+      publicPath: false,
+      timings: true,
+      version: false,
+      warnings: true,
+      colors: true
+    }
+  },
+
+  plugins: [
+    new Dotenv({
+      path: './.env',
+      safe: true
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new HtmlWebpackPlugin({
+      template: `${__dirname}/src/app/template.html`,
+      filename: 'index.html',
+      inject: 'body',
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new DashboardPlugin(),
+    new ExtractTextPlugin({filename: 'style.css',
+      allChunks: true
+    })
+  ]
+
+}
