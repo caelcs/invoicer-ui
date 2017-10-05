@@ -18,9 +18,7 @@ Simple React-Redux app to show your invoices.
 
 ## Dev server
 
-Ensure you have Node installed, then;
-
-	git clone https://github.com/thekeogh/webpack-react-redux .
+Ensure you have Node installed.
 
 Install node modules
 
@@ -45,7 +43,7 @@ By default `.env.production` is in `.gitignore`, if this doesn't contain any sen
 
 ## Testing
 
-A few simple tests have been included using [Jest](https://facebook.github.io/jest) and [Enzyme](https://github.com/airbnb/enzyme).
+Our test suit is using [Jest](https://facebook.github.io/jest) and [Enzyme](https://github.com/airbnb/enzyme).
 
 	npm test
 

@@ -77,9 +77,8 @@
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap": "4.0.0-alpha.6",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.2.1",
     "popper": "^1.0.0",
     "popper.js": "^1.12.5",
     "react": "^16.0.0",
