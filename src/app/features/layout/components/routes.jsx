@@ -4,6 +4,7 @@ import {
 	Route,
 	Switch
 } from 'react-router-dom';
+import SignIn from '../../login/sign-in';
 
 const Home = () => {
 	return (<div className="panel panel-headline">
@@ -14,7 +15,7 @@ const Home = () => {
 		<div className="panel-body">
 			<div className="row">
 				<div className="col-md-3">
-					who are you?
+					<SignIn />
 				</div>
 			</div>
 		</div>
