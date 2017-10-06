@@ -78,6 +78,19 @@ If you want to deploy to now for production also, then you will likely have a sl
 	npm run deploy-production
 	npm run alias-production
 
+## Docker
+
+The docker file provided use nginx to deploy the app as static content.
+
+##Steps:
+1. Build the app using
+`npm run build`
+2. Build the docker image.
+`docker build -t <image_name> .`
+3. Run the image.
+`docker run --name <container_name> -d -p 8080:80 <image_name>`
+4. Go to your browser and try `http://localhost:8080`
+
 ## Available commands
 
 - `npm start` - start the dev server
