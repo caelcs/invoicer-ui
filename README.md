@@ -82,6 +82,10 @@ If you want to deploy to now for production also, then you will likely have a sl
 
 The docker file provided use nginx to deploy the app as static content.
 
+## Deploy using kubernetes
+
+Please refer to the project [invoicer-ui-deploy](https://github.com/caelwinner/invoicer-ui-deploy)
+
 ##Steps:
 1. Build the app using
 `npm run build`
